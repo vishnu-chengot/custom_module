@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_service_request_user,access.request.service,model_service_request,,1,1,1,1
+access_service_project_user,access.request.project.service,model_service_request,,1,1,1,1
+access_service_execute_user,access.service.execute,model_service_execute,,1,1,1,1
+access_project_user,access.project,hr.model_hr_employee,,1,1,1,1

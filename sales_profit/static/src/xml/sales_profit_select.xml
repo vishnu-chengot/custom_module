@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--The templates are defining the buttons to be displayed on different lists: UploadDocumentList, BillsListView, and ExpensesListView.-->
+<templates id="template" xml:space="preserve">
+	<t t-name="sales_profit_report">
+		<div class="btn-sales-profit-report pl-1">
+			<button type="button" class="btn btn-primary">Sales Profit and Loss Preview</button>
+		</div>
+    </t>
+	<t t-name="sales_profit_report_info">
+        <div class="container">
+            <form role="form">				
+				<div class="container p-3 m-8">                              
+					<div class="card-body">
+						<div class="row">
+							<div class="col-12">
+									<li class="list-group-item bg-light">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<p class="card-text pl-2">
+												<strong><span >Sale Order Info</span></strong>													
+												</p>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<p class="card-text pl-2">
+												<strong><span >Product Info</span></strong>													
+												</p>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<p class="card-text pl-2">
+												<strong><span >Price Info</span></strong>													
+												</p>
+											</div>
+										</div>
+									</li>
+									<t t-foreach="orders" t-as="order">
+										<li t-attf-class="list-group-item  {{ (order.state === 'sale') ? 'bg-success' : 'bg-info' }} p-1">
+											<t t-if="order.state !== 'draft'">
+												<div > <strong class="text-center">Sale Order # <span t-esc="order.name"></span></strong> </div>
+											</t>
+											<t t-if="order.state === 'draft'">
+												<div > <strong class="text-center">Quotation #<span t-esc="order.name"></span></strong> </div>
+											</t>	
+										</li>
+										<li class="list-group-item">
+										<div class="row">
+											<div class="col-sm-4 col-md-4">
+												<p class="card-text pl-2">												
+												Customer :<strong><span t-esc="order.customer"></span></strong>	
+												<br/>Order date :<strong><span t-esc="order.date_order"></span></strong>
+												</p>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<t t-foreach="order.order_line" t-as="line">
+													<p class="card-text pl-2">
+													<strong><span t-esc="line.name"></span></strong>
+													- <strong><span t-esc="line.qty"></span></strong>
+													<br/>Sale price <strong><span t-esc="line.sale_price"></span></strong>	
+													<br/>Cost <strong><span t-esc="line.cost"></span></strong>
+													<br/><span t-attf-class="{{ (line.margin_value === 'True') ? 'text-success' : 'text-danger' }}">Margin <strong><span t-esc="line.margin"></span></strong></span>
+													</p>
+												</t>
+											</div>
+											<div class="col-sm-4 col-md-4 pr-0">
+												<p class="card-text pl-2">
+													Sub Total :<strong><span t-esc="order.total.formatted_amount_untaxed"></span></strong>
+													<br/>Total including taxes :<strong><span t-esc="order.total.formatted_amount_total"></span></strong>
+													<br/><span t-attf-class="{{ (order.margin_value === 'True') ? 'text-success' : 'text-danger' }}" >Margin :<strong><span t-esc="order.margin"></span></strong></span>
+												</p>
+												<t t-if="order.invoices" t-foreach="order.invoices" t-as="invoice">
+													<p class="card-text pl-2">														
+														<t t-if="invoice.state !== 'Paid'">
+															<p class="bg-warning rounded-left p-2 text-white">
+																<strong><span>Invoices:</span></strong><br/>
+																<strong><span t-esc="invoice.name"></span><span> - </span><span t-esc="invoice.state"></span></strong>
+																<br/><strong> Payments Due <span t-esc="invoice.payments_due"></span></strong>	
+															</p>
+														</t>
+														<t t-if="invoice.state === 'Paid'">
+															<p class="bg-success rounded-left p-2">
+																<strong><span>Invoices:</span></strong><br/>
+																<strong><span t-esc="invoice.name"></span></strong>
+																<strong><span class="bg-success border-success"> - Paid.</span></strong>
+															</p>
+														</t>
+													</p>
+												</t>
+												<t t-if="order.invoices === false">
+													<p class="card-text p-2 rounded-left bg-danger">
+														<strong><span>No Invoices Found.</span></strong>
+													</p>
+												</t>
+											</div>												
+							
+										</div>
+										</li>
+									</t>
+									
+							</div>                            
+						</div>
+						
+					</div>
+				</div>
+				
+					
+				
+            </form>
+        </div>        
+    </t>   
+</templates>

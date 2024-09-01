@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+        <record id="view_hospital_patient_tree" model="ir.ui.view">
+            <field name="name">public.document.tree</field>
+            <field name="model">public.document</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Document Title" />
+                    <field name="tag" string="Tags" widget="many2many_tags" />
+                    <field name="author" string="Author" />
+                </tree>
+            </field>
+        </record>
+        
+
+        <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">public.document.form</field>
+        <field name="model">public.document</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    
+                            <field name="name"/>
+                            <field name="tag" widget="many2many_tags" optional="show"/>
+                            <field name="description" widget="ckeditor" />
+                            <field name="document_file"  filename="file_name" widget="many2many_binary"/>
+                            <field name="author" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+        </record>
+
+        <record id="action_public_document" model="ir.actions.act_window">
+            <field name="name">Documents</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">public.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Uploud Your First Document !
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+        id="menu_document_root"
+        name="Public Documents"
+        web_icon="public_document,static/description/icon.png"
+        sequence="1"
+        />
+
+        <menuitem
+            id="menu_document_new"
+            name="Documents"
+            parent="menu_document_root"
+            action="action_public_document"
+            sequence="1"
+        />
+
+</odoo>

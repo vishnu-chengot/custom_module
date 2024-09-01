@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record model="ir.module.category" id="public_document_module_admin"> 
+        <field name="name">Public Document</field>
+        <field name="description">It will give all access for public document app </field>
+    </record>
+
+    <record id="group_public_document_admin" model="res.groups">
+        <field name="name"> Document Admin </field>
+        <field name="category_id" ref="public_document_module_admin"/> 
+    </record>
+
+    <record id="group_public_document_user" model="res.groups">
+        <field name="name"> Document User </field>
+        <field name="category_id" ref="public_document_module_admin"/> 
+    </record>
+
+</odoo>

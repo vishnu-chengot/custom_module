@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.public.document2,access_public_document,public_document.model_public_document,group_public_document_admin,1,1,1,1
+access.document.tag2,access_document_tag,public_document.model_document_tag,group_public_document_admin,1,1,1,1
+access.public_document,access_public_document,public_document.model_public_document,group_public_document_user,1,0,0,0
+access.document.tag,access_document_tag,public_document.model_document_tag,group_public_document_user,1,0,0,0

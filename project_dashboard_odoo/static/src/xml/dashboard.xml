@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PjDashboard">
+        <div class="oh_dashboards" style=" background-color: #e9e6e6; height:100vh;">
+            <div class="container-fluid o_pj_dashboard" style=" background-color: #e9e6e6;">
+            </div>
+        </div>
+    </t>
+
+    <t t-name="DashboardProject">
+<!--        <div class="row main-section" style="margin-left: 170px;">-->
+        <!--            <div class="inner_select" style="display: flex;width:100%;">-->
+        <div class="container pt-5">
+
+        <div class="row pt-2">
+  <div class="col-sm-3">
+        <select class="form-select fs-5 select-box" id="project_selection">
+  <option>Choose Year</option>
+</select>
+
+
+  </div>
+            <div class="col-sm-3">
+        <select class="form-select fs-5 select-box" id="month_selection">
+  <option value='month'>Choose month</option>
+</select>
+
+
+  </div>
+            <div class="col-sm">
+        <button type="button" class="btn btn-outline-primary btn-lg  rounded-4 ms-4 btn_style" id="filter_button"><i class="bi bi-search fs-3 fw-bold"></i></button>
+
+
+  </div>
+
+</div>
+</div>
+
+        <div class="container mt-5">
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-bordered border-dark table-striped  ">
+            <thead>
+                <tr>
+                    <th class="table-info fs-5">Expected Revenu</th>
+                    <th class="table-warning fs-5">Fixed Cost</th>
+                    <th class="table-primary fs-5">TM/AMC/DR</th>
+                    <th class="table-danger fs-5">Pending milestone</th>
+                    <th class="table-danger fs-5">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Projections</th>
+                    <th id="fixed_forcast">00</th>
+                    <th id="timesheet_forcast">00</th>
+                    <th id="pending_forcast">00</th>
+                    <th>00</th>
+
+                </tr>
+                <tr>
+                    <th>Achieved</th>
+                    <th>00</th>
+                    <th>00</th>
+                    <th id="achieved_data">00</th>
+                    <th>00</th>
+
+                </tr>
+                <tr>
+                    <th>Percentage</th>
+                    <th>00</th>
+                    <th>00</th>
+                    <th>00</th>
+                    <th>00</th>
+
+                </tr>
+
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+            <!--==================================================================================    -->
+            <div class="row mt-5">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-bordered border-dark table-striped  ">
+  <thead>
+    <tr>
+      <th class="table-danger fs-5">S NO</th>
+        <th class="table-warning fs-5">Month</th>
+        <th class="table-primary fs-5">Subtotal</th>
+        <th class="table-success fs-5">Total</th>
+    </tr>
+  </thead>
+            <tbody id="tbody">
+
+
+  </tbody>
+</table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+        <!--        <div class="row" style="margin-left: 4%;">-->
+        <!--            <div class="col-md-4 col-sm-6 tot_projects oh-payslip">-->
+        <!--                <div class="oh-card">-->
+        <!--                    <div class="oh-card-body tot_projects" style="box-shadow:5px 11px 30px;">-->
+        <!--                        <div class="stat-widget-one" style="display:flex;">-->
+        <!--                            <div class="stat-icon"><i class="fa fa-puzzle-piece" /></div>-->
+        <!--                            <div class="stat-head" style="padding: 5%;width: 60%;">Total Project</div>-->
+        <!--                            <div class="stat_count" style="padding: 4%;width: 30%;" >-->
+        <!--                                <t t-esc="widget.total_projects"/>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+
+
+    </t>
+
+    <t t-name="DashboardChart">
+
+    </t>
+</templates>
